@@ -9,7 +9,7 @@
                     <div class="prose w-full flex-grow">
 
 
-                        {{ $slot }}
+                        {{ $slot ?? ' ' }}
                         @yield('content')
 
 

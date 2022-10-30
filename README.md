@@ -4,6 +4,13 @@
 3. Make Authentication Scafolding
 4. Add CrestApp  and Scafold Resources ( Clinic, Doctor, Secretary, Patient, )
 
+# php artisan create:layout "New Dentist" --template-name=super
+
+# php artisan resource-file:create Clinic --fields="id,name,description,about_us,email" --force
+
+# php artisan create:scaffold Clinic --translation-for=en,fr --with-migration --with-soft-delete  --with-form-request --# ontroller-name=ClinicController --template-name=super2 --force
+
+
 
 # Main commands
 php artisan create:layout [application-name]
