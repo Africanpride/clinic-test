@@ -6,16 +6,22 @@
             </a>
         </x-slot>
 
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <!-- Name -->
             <div>
-                <x-input-label for="name" :value="__('Name')" />
+                <x-input-label for="firstName" :value="__('First Name')" />
 
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <x-text-input id="firstName" class="block mt-1 w-full" type="text" name="firstName" :value="old('firstName')" required autofocus />
+            </div>
+            <div>
+                <x-input-label for="lastName" :value="__('Last Name')" />
 
-                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                <x-text-input id="lastName" class="block mt-1 w-full" type="text" name="lastName" :value="old('lastName')" required autofocus />
             </div>
 
             <!-- Email Address -->
@@ -23,8 +29,6 @@
                 <x-input-label for="email" :value="__('Email')" />
 
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
             <!-- Password -->
@@ -35,8 +39,6 @@
                                 type="password"
                                 name="password"
                                 required autocomplete="new-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
             <!-- Confirm Password -->
@@ -46,18 +48,20 @@
                 <x-text-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
                                 name="password_confirmation" required />
-
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
+            <div class="flex flex-col items-center justify-end mt-4 gap-2">
 
-                <x-primary-button class="ml-4">
+                <x-primary-button class=" w-full  ">
                     {{ __('Register') }}
                 </x-primary-button>
+
+                @if (Route::has('login'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900"
+                        href="{{ route('login') }}">
+                        {{ __('Login Rather?') }}
+                    </a>
+                @endif
             </div>
         </form>
     </x-auth-card>

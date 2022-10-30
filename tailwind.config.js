@@ -13,8 +13,16 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            daisyui: {
+                themes: ["corporate", "dark", "lofi", "light"],
+                styled: true,
+            },
         },
     },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require("daisyui"),
+        require('@tailwindcss/line-clamp')
+    ],
 };
